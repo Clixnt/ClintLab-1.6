@@ -1,0 +1,336 @@
+html {
+  scrollbar-width: thin;
+}
+body {
+  background-image: url(background/back1.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: Arial, Helvetica, sans-serif;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  /* outline: 3px solid blueviolet; */
+}
+:root {
+  --content-hover-color: hsl(167, 46%, 19%);
+  --content-hover-color2: hsl(166, 27%, 42%);
+  --hover-color-green: hsl(166, 24%, 51%);
+  --main-shadow: 0px 0px 30px 1px black;
+}
+
+/*The ClintLAB*/
+main {
+  display: grid;
+  grid-template-rows: auto 2fr auto;
+  grid-template-columns: 1fr minmax(250px, 700px) minmax(100px, 250px) 1fr;
+  gap: 20px;
+
+  grid-template-areas:
+    "header header header header"
+    "space1 section aside space2"
+    "footer footer footer footer";
+
+  @media (width <= 520px) {
+    grid-template-columns: 0px minmax(200px, 700px) minmax(100px, 250px) 0px;
+    grid-template-areas:
+      "header header header header"
+      "space1 section section space2"
+      "space1 section section space2"
+      "space1 aside aside space2"
+      "footer footer footer footer";
+  }
+}
+header {
+  grid-area: header;
+}
+section {
+  grid-area: section;
+}
+aside {
+  grid-area: aside;
+}
+footer {
+  grid-area: footer;
+}
+.ok {
+  grid-area: space1;
+}
+.nah {
+  grid-area: space2;
+}
+
+header {
+  margin: 10px;
+  border-radius: 10px 10px 0px 0px;
+  backdrop-filter: blur(10px);
+  box-shadow: var(--main-shadow);
+  height: fit-content;
+  width: auto;
+
+  & h3,
+  p {
+    display: grid;
+    place-items: center;
+    color: white;
+    text-shadow: -2px 2px 15px white;
+  }
+  & h3 {
+    font-size: 2rem;
+    font-family: papyrus;
+    font-weight: bold;
+    height: 65px;
+    padding-top: 10px;
+  }
+  & p {
+    font-weight: bold;
+    font-size: 0.6rem;
+    height: 40px;
+    padding-bottom: 10px;
+
+    @media (width <= 520px) {
+      font-size: 0.5rem;
+    }
+    @media (width <= 375px) {
+      font-size: 0.45rem;
+    }
+  }
+}
+
+/*Navigation Bar*/
+header nav {
+  box-shadow: var(--main-shadow);
+  border-radius: 0 0 10px 10px;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap-reverse;
+  text-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--hover-color-green) transparent;
+
+  & ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    height: 100%;
+
+    & li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 75px;
+      transition: all 0.25s;
+      border-bottom: 3px solid transparent;
+
+      &:hover {
+        transition: all 0.25s;
+        border-bottom: 3px solid var(--hover-color-green);
+        color: var(--hover-color-green);
+      }
+
+      & a {
+        color: white;
+        font-weight: bold;
+        font-size: 0.9rem;
+      }
+    }
+  }
+
+  @media (width <= 440px) {
+    & li:nth-child(2) {
+      display: none;
+    }
+    & li:nth-child(3) {
+      display: none;
+    }
+  }
+}
+
+section {
+  padding: 15px;
+  box-shadow: var(--main-shadow);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  @media (width <= 520px) {
+    height: 1200px;
+  }
+}
+
+.arc1,
+.arc2,
+.arc3 {
+  background-size: 100% 100%;
+  border-radius: 10px;
+  box-shadow: var(--main-shadow);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+  padding: 15px;
+  text-wrap: wrap;
+
+  & a {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    & h3,
+    p {
+      color: white;
+      font-size: 1rem;
+      transition: all 0.25s;
+      font-size: clamp(
+        1rem,
+        0.9285714285714285rem + 0.35714285714285743vw,
+        1.1rem
+      );
+
+      &:hover {
+        transition: all 0.25s;
+        color: var(--content-hover-color2);
+      }
+    }
+  }
+}
+.arc1 {
+  background-image: url(image/news3.webp);
+}
+.arc2 {
+  background-image: url(image/news6.png);
+  margin-top: 20px;
+}
+.arc3 {
+  background-image: url(image/news11.webp);
+  margin-top: 20px;
+}
+
+/* Aside */
+aside {
+  box-shadow: var(--main-shadow);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  padding: 10px;
+  border-radius: 20px;
+  width: 100%;
+  height: 100%;
+
+  & p {
+    text-align: center;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 13px;
+    padding-block: 10px;
+    transition: ease-in-out 0.25s;
+    font-size: 0.85rem;
+
+    &:hover {
+      transition: all 0.25s;
+      color: var(--content-hover-color);
+    }
+  }
+  & img {
+    width: 80%;
+    border-radius: 5px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    box-shadow: var(--main-shadow);
+  }
+}
+
+.asd1-arc,
+.asd1-arc2,
+.asd1-arc3 {
+  background-color: beige;
+  box-shadow: var(--main-shadow);
+  padding-block: 10px;
+}
+.asd1-arc3 {
+  border-radius: 0px 0px 10px 10px;
+}
+.asd2-arc,
+.asd2-arc2,
+.asd2-arc3 {
+  background-color: beige;
+  box-shadow: var(--main-shadow);
+  padding-block: 10px;
+}
+.asd2-arc {
+  border-radius: 10px 10px 0px 0px;
+}
+
+/* Footer */
+footer {
+  height: fit-content;
+  width: 99%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  backdrop-filter: blur(10px);
+  box-shadow: var(--main-shadow);
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.footer-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 7px;
+  padding: 20px;
+  width: 100%;
+
+  @media (width <= 425px) {
+    display: none;
+  }
+
+  & p:nth-child(1) {
+    font-family: monospace;
+    font-size: 0.65rem;
+    font-size: clamp(0.65rem, 0.4rem + 1.25vw, 1rem);
+    color: aliceblue;
+  }
+  & p:nth-child(2) {
+    font-size: 0.65rem;
+    font-size: clamp(0.65rem, 0.4rem + 1.25vw, 1rem);
+    font-family: "Courier New", Courier, monospace;
+    color: aliceblue;
+  }
+  & p:nth-child(3) {
+    font-size: 0.6rem;
+    color: aliceblue;
+  }
+}
+
+.footer-name {
+  padding: 20px;
+  width: fit-content;
+  height: 100%;
+
+  & h4 {
+    font-size: 1.5rem;
+    font-size: clamp(1.5rem, 0.880466472303207rem + 2.3323615160349855vw, 2rem);
+    font-family: papyrus;
+    font-weight: bold;
+    color: white;
+    text-shadow: -2px 2px 15px white;
+  }
+}
