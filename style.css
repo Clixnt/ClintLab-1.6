@@ -1,5 +1,6 @@
 html {
   scrollbar-width: thin;
+  scrollbar-color: #90d0c2 #2e3b37;
 }
 body {
   background-image: url(background/back1.jpg);
